@@ -1,0 +1,498 @@
+:root {
+  --color-1: #53c12e;
+  --color-2: #fcb40f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+}
+
+#startScreen,
+#startTimer {
+  cursor: none;
+}
+
+#startScreen {
+  z-index: 1000;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#startTimer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  display: none;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 20vw;
+  color: white;
+  pointer-events: none;
+}
+
+#game {
+  width: 100vw;
+  height: 56.25vw;
+  cursor: none;
+  overflow: hidden;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#stage {
+  position: relative;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+.gamelayer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+}
+
+#foreground {
+  z-index: 500;
+  background-image: url(assets/foreground_mobile_portrait.png);
+}
+
+#middleground {
+  z-index: 400;
+  background-image: url(assets/middleground_mobile_portrait.png);
+}
+
+#background {
+  z-index: 300;
+  background-image: url(assets/background_mobile_portrait.jpg);
+}
+
+#crosshair_wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  pointer-events: none;
+}
+
+#crosshair_rect {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 1px;
+  left: 50%;
+  top: 50%;
+}
+
+#crosshair {
+  align-self: center;
+  max-height: 2rem;
+  max-width: 2rem;
+}
+
+#smoke {
+  width: 5vw;
+  height: auto;
+  position: absolute;
+  left: 47.4%;
+  top: 46.1%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transform-origin: center;
+  pointer-events: none !important;
+}
+
+#gun {
+  width: 19vw;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  right: 15vw;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#gun_flash {
+  width: 14vw;
+  height: auto;
+  position: absolute;
+  bottom: 14vw;
+  right: 30vw;
+  opacity: 0;
+  pointer-events: none !important;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#counterContainer {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  font-size: 1.2vw;
+  z-index: 500;
+  transform: translateX(-50%);
+  line-height: 0.9;
+  font-style: italic;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: black;
+}
+#counterContainer span {
+  font-size: 3vw;
+  font-weight: normal;
+  text-shadow: 1px 1px 1px #000000;
+}
+
+#pointSystem span {
+  color: var(--color-1);
+}
+
+#countdown span {
+  color: var(--color-2);
+}
+
+#counterContainer p {
+  display: inline;
+}
+#counterContainer p:last-child {
+  margin-left: 60px;
+}
+
+.target {
+  position: absolute;
+  background-image: url(assets/target.png);
+  background-size: 100% auto;
+  transform: perspective(1000px) rotateX(90deg) rotateY(0deg);
+  transform-origin: bottom;
+  transition: 0.3s ease-in;
+}
+
+#target-0 {
+  width: 8vw;
+  height: 8.7vw;
+  left: 31%;
+  top: 43%;
+  z-index: 450;
+}
+
+#target-1 {
+  width: 4vw;
+  height: 4.6vw;
+  left: 28.75%;
+  top: 39.5%;
+  z-index: 350;
+}
+
+#target-2 {
+  width: 8vw;
+  height: 8vw;
+  left: 58%;
+  top: 43%;
+  z-index: 450;
+}
+
+#target-3 {
+  width: 4.5vw;
+  height: 4vw;
+  left: 35.5%;
+  top: 40%;
+  z-index: 350;
+}
+
+#target-4 {
+  width: 3.5vw;
+  height: 7.3vw;
+  left: 60.8%;
+  top: 40%;
+  z-index: 350;
+  transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  transform-origin: center left;
+}
+
+#target-5 {
+  width: 8vw;
+  height: 9vw;
+  left: 49%;
+  top: 43%;
+  z-index: 450;
+}
+
+#target-6 {
+  width: 4vw;
+  height: 3.5vw;
+  left: 43%;
+  top: 39.5%;
+  z-index: 350;
+}
+
+#target-7 {
+  width: 4vw;
+  height: 3.5vw;
+  left: 45.7%;
+  top: 39.5%;
+  z-index: 350;
+}
+
+#target-8 {
+  width: 8vw;
+  height: 9vw;
+  left: 25%;
+  top: 41%;
+  z-index: 450;
+  transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  transform-origin: center left;
+}
+
+#target-9 {
+  width: 8vw;
+  height: 8.7vw;
+  left: 40%;
+  top: 43%;
+  z-index: 450;
+}
+
+#target-10 {
+  width: 8vw;
+  height: 8.7vw;
+  left: 71%;
+  top: 43%;
+  z-index: 450;
+  transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  transform-origin: center right;
+}
+
+#target-11 {
+  width: 3.8vw;
+  height: 8vw;
+  left: 51.2%;
+  top: 39.5%;
+  z-index: 350;
+  transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  transform-origin: center right;
+}
+
+.target.active {
+  animation: from-bottom 0.3s forwards ease-in;
+}
+@keyframes from-bottom {
+  0% {
+    transform: perspective(1000px) rotateX(90deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+}
+.target.hide {
+  animation: to-bottom 0.15s forwards ease-in;
+}
+@keyframes to-bottom {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(90deg) rotateY(0deg);
+  }
+}
+.target.activeAlt {
+  animation: from-left 0.15s forwards ease-in;
+  transform-origin: center left;
+}
+@keyframes from-left {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+}
+.target.hideAlt {
+  animation: to-left 0.15s forwards ease-in;
+  transform-origin: center left;
+}
+@keyframes to-left {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(90deg);
+  }
+}
+
+.flash-animation {
+  animation: flash-animation 0.35s ease-in-out;
+  pointer-events: none !important;
+}
+
+@keyframes flash-animation {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.gun-animation {
+  animation: shot-animation 0.35s ease-in-out;
+}
+
+@keyframes shot-animation {
+  0% {
+    transform: rotate(0deg) scale(1) skew(0deg, 0deg);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.2) skew(-5deg, 15deg);
+  }
+  100% {
+    transform: rotate(0deg) scale(1) skew(0deg, 0deg);
+  }
+}
+
+.smoke-animation {
+  animation: smoke-animation 0.35s ease-in-out;
+}
+
+@keyframes smoke-animation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  10% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  70% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.crosshair_absolute {
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 1080px) and (orientation: landscape) {
+  #foreground {
+    background-image: url(assets/foreground_mobile.png);
+  }
+
+  #middleground {
+    background-image: url(assets/middleground_mobile.png);
+  }
+
+  #background {
+    background-image: url(assets/background_mobile.jpg);
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #crosshair {
+    align-self: center;
+    max-height: 4rem;
+    max-width: 4rem;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  #foreground {
+    background-image: url(assets/foreground_medium.png);
+  }
+
+  #middleground {
+    background-image: url(assets/middleground_medium.png);
+  }
+
+  #background {
+    background-image: url(assets/background_medium.jpg);
+  }
+
+  #gun {
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  #foreground {
+    background-image: url(assets/foreground.png);
+  }
+
+  #middleground {
+    background-image: url(assets/middleground.png);
+  }
+
+  #background {
+    background-image: url(assets/background.jpg);
+  }
+}
+
+#startgame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--color-1);
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999999999;
+}
+#endgame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--color-1);
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999999999;
+  visibility: hidden;
+}
